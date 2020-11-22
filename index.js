@@ -24,10 +24,7 @@ app.get("/send-push", (req, res, next) => {
     to: sendToken,
     notification: {
       title: "this is title",
-      body: {
-        xPath: "sunny",
-      },
-
+      body: "This is message",
       sound: true,
       vibrate: true,
     },
@@ -35,7 +32,10 @@ app.get("/send-push", (req, res, next) => {
 
   fcm.send(payload, (err, response) => {
     //check for error
-    if (err) throw err;
+    if (err) {
+      console.log(err);
+      throw err;
+    }
     // sending success resposne
     res.status(200).send({
       success: true,
