@@ -4,7 +4,8 @@ const app = express();
 const FCM = require("fcm-node");
 
 //add server key
-const serverKey = "add server key here from firebase";
+const serverKey =
+  "AAAAx8Ieekc:APA91bEq9vLJXIoQYFBNJKSRQRpiFpuavN-J8k4zCyxDu7_qVy9xdenUUO2rjw2iF1Gr59hsDAzZ6o-DHNahufC7Vd_q72g8c0u317EWXvqOTgbQyY8xkb4KY-XhzaE-1DiXRsxrbB7y";
 
 let fcm = new FCM(serverKey);
 
@@ -23,7 +24,12 @@ app.get("/send-push", (req, res, next) => {
     to: sendToken,
     notification: {
       title: "this is title",
-      body: "this is body",
+      body: {
+        xPath: "sunny",
+      },
+
+      sound: true,
+      vibrate: true,
     },
   };
 
